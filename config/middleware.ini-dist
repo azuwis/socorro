@@ -332,6 +332,7 @@
         # doc: Base URL where correlations text files are
         # converter: str
         #base_url='https://crash-analysis.mozilla.com/crash_analysis/'
+        base_url='http://localhost/'
 
         # name: save_download
         # doc: Whether files downloaded for correlations should be temporary stored on disk
