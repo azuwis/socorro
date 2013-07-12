@@ -48,25 +48,15 @@ class BaseTable(object):
         self.start_date = self.end_date - datetime.timedelta(self.days)
 
         self.releases = {
-            'WaterWolf': {
-                'channels': {
-                    'ESR': {
-                        'versions': [{
-                            'number': '1.0',
-                            'probability': 0.5,
-                            'buildid': '%s000000'
-                        }],
-                        'adu': '100',
-                        'repository': 'esr',
-                        'throttle': '1'
-                    },
+            'cloudmusic': {
+		'channels': {
                     'Release': {
                         'versions': [{
-                            'number': '2.0',
+                            'number': '1.0.0.0',
                             'probability': 0.5,
                             'buildid': '%s000001'
                         }, {
-                            'number': '2.1',
+                            'number': '1.0.0.1',
                             'probability': 0.5,
                             'buildid': '%s000002'
                         }],
@@ -74,128 +64,10 @@ class BaseTable(object):
                         'repository': 'release',
                         'throttle': '0.1'
                     },
-                    'Beta': {
-                        'versions': [{
-                            'number': '3.0',
-                            'probability': 0.06,
-                            'buildid': '%s000003',
-                            'beta_number': '2'
-                        }, {
-                            'number': '3.1',
-                            'probability': 0.02,
-                            'buildid': '%s000004',
-                            'beta_number': '1'
-                        }],
-                        'adu': '100',
-                        'repository': 'beta',
-                        'throttle': '1'
-                    },
-                    'Aurora': {
-                        'versions': [{
-                            'number': '4.0a2',
-                            'probability': 0.03,
-                            'buildid': '%s000005'
-                        }, {
-                            'number': '3.0a2',
-                            'probability': 0.01,
-                            'buildid': '%s000006'
-                        }],
-                        'adu': '100',
-                        'repository': 'dev',
-                        'throttle': '1'
-                    },
-                    'Nightly': {
-                        'versions': [{
-                            'number': '5.0a1',
-                            'probability': 0.01,
-                            'buildid': '%s000007'
-                        }, {
-                            'number': '4.0a1',
-                            'probability': 0.001,
-                            'buildid': '%s000008'
-                        }],
-                        'adu': '100',
-                        'repository': 'dev',
-                        'throttle': '1'
-                    }
                 },
-                'crashes_per_hour': '100',
-                'guid': '{waterwolf@example.com}'
-            },
-            'NightTrain': {
-                'channels': {
-                    'ESR': {
-                        'versions': [{
-                            'number': '1.0',
-                            'probability': 0.5,
-                            'buildid': '%s000010'
-                        }],
-                        'adu': '10',
-                        'repository': 'esr',
-                        'throttle': '1'
-                    },
-                    'Release': {
-                        'versions': [{
-                            'number': '2.0',
-                            'probability': 0.5,
-                            'buildid': '%s000011'
-                        }, {
-                            'number': '2.1',
-                            'probability': 0.5,
-                            'buildid': '%s000012'
-                        }],
-                        'adu': '1000',
-                        'repository': 'release',
-                        'throttle': '0.1'
-                    },
-                    'Beta': {
-                        'versions': [{
-                            'number': '3.0',
-                            'probability': 0.06,
-                            'buildid': '%s000013',
-                            'beta_number': '2'
-                        }, {
-                            'number': '3.1',
-                            'probability': 0.02,
-                            'buildid': '%s000014',
-                            'beta_number': '1'
-                        }],
-                        'adu': '10',
-                        'repository': 'beta',
-                        'throttle': '1'
-                    },
-                    'Aurora': {
-                        'versions': [{
-                            'number': '4.0a2',
-                            'probability': 0.03,
-                            'buildid': '%s000015'
-                        }, {
-                            'number': '3.0a2',
-                            'probability': 0.01,
-                            'buildid': '%s000016'
-                        }],
-                        'adu': '10',
-                        'repository': 'dev',
-                        'throttle': '1'
-                    },
-                    'Nightly': {
-                        'versions': [{
-                            'number': '5.0a1',
-                            'probability': 0.01,
-                            'buildid': '%s000017'
-                        }, {
-                            'number': '4.0a1',
-                            'probability': 0.001,
-                            'buildid': '%s000018'
-                        }],
-                        'adu': '10',
-                        'repository': 'dev',
-                        'throttle': '1'
-                    }
-                },
-                'crashes_per_hour': '50',
-                'guid': '{nighttrain@example.com}'
-            }
+                'crashes_per_hour': '1',
+                'guid': '{cloudmusic@netease.com}'
+	    }
         }
 
         self.oses = {
@@ -386,7 +258,7 @@ class Products(BaseTable):
 
     def generate_rows(self):
         for i, product in enumerate(self.releases):
-            row = [product, str(i), 1.0, product.lower(), 4.0]
+            row = [product, str(i), 1.0, product.lower(), 999.0]
             yield row
 
 
@@ -624,7 +496,7 @@ class ProductProductidMap(BaseTable):
     table = 'product_productid_map'
     columns = ['product_name', 'productid', 'rewrite', 'version_began',
                'version_ended']
-    rows = [['WaterWolf', '{waterwolf@example.org}', 'f', '1.0', '1.0']]
+    rows = [['cloudmusic', '{cloudmusic@netease.com}', 'f', '1.0', '1.0']]
 
 
 class ReleaseRepositories(BaseTable):
@@ -643,7 +515,7 @@ class ReleaseRepositories(BaseTable):
 class CrontabberState(BaseTable):
     table = 'crontabber_state'
     columns = ['last_updated', 'state']
-    rows = [['2012-05-16 00:00:00', '{}']]
+    rows = [['2013-07-24 00:00:00', '{}']]
 
 
 class CrashTypes(BaseTable):
@@ -693,9 +565,9 @@ class RawCrashes(BaseTable):
 # the order that tables are loaded is important.
 tables = [OSNames, OSNameMatches, ProcessTypes, Products, ReleaseChannels,
           ProductReleaseChannels, RawADU, ReleaseChannelMatches,
-          ReleasesRaw, UptimeLevels, WindowsVersions, Reports, RawCrashes, OSVersions,
+          ReleasesRaw, UptimeLevels, WindowsVersions, OSVersions,
           ProductProductidMap, ReleaseRepositories, CrontabberState,
           CrashTypes, ReportPartitionInfo, Skiplist]
 
 # FIXME this could be built up from BaseTable's releases dict, instead
-featured_versions = ('5.0a1', '4.0a2', '3.1b1', '2.1')
+featured_versions = ('1.0.0.1')
