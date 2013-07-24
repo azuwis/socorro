@@ -23,10 +23,14 @@ END IF;
 SELECT max(sort) INTO current_sort
 FROM products;
 
+IF current_sort IS NULL THEN
+    current_sort := -1;
+END IF;
+
 INSERT INTO products ( product_name, sort, rapid_release_version,
         release_name, rapid_beta_version )
 VALUES ( prodname, current_sort + 1, initversion,
-        COALESCE(ftpname, prodname));
+        COALESCE(ftpname, prodname), rapid_beta_version);
 
 -- add the release channels
 
