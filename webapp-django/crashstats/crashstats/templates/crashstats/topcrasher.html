@@ -194,20 +194,6 @@ Top Crashers for {{ product }} {{ version }}
 {% endblock %}
 
 {% block site_js %}
-<script type="text/javascript">//<![CDATA[
-    var SocAjax = '/topcrasher/plot_signature/{{ product }}/{{ version }}',
-        SocAjaxStartEnd = '/{{ tcbs.start_date }}/{{ tcbs.end_date }}/',
-        SocImg = '/static/img/',
-        SocReport = {
-            sig_base: '{{ url('crashstats.correlations_signatures_json') }}',
-            base: '{{ url('crashstats.correlations_json') }}',
-            path: 'product={{ product }}&version={{ version }}',
-            loading: 'Loading <img src="{{ static('img/loading.png') }}" width="16" height="17" />',
-            product: '{{ product }}',
-            version: '{{ version }}'
-        };
-//]]>
-</script>
   {{ super() }}
   {% compress js %}
   <script src="{{ static('crashstats/js/jquery/plugins/ui/jquery.tablesorter.min.js') }}"></script>
