@@ -2,8 +2,9 @@
 # These settings overrides what's in settings/base.py
 
 # To extend any settings from settings/base.py here's an example:
-#from . import base
+from . import base
 #INSTALLED_APPS = base.INSTALLED_APPS + ['debug_toolbar']
+MIDDLEWARE_CLASSES = tuple(['fake.AuthenticationMiddleware' if x == 'django.contrib.auth.middleware.AuthenticationMiddleware' else x for x in base.MIDDLEWARE_CLASSES])
 
 CACHE_MIDDLEWARE = False
 # creates "./models-cache" dir
