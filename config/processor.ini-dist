@@ -298,7 +298,7 @@
     # name: exploitability_tool_pathname
     # doc: the full pathname of the extern program exploitability tool (quote path with embedded spaces)
     # converter: str
-    exploitability_tool_pathname='/data/socorro/stackwalk/bin/exploitability'
+    exploitability_tool_pathname='/home/socorro/socorro/stackwalk/bin/exploitability'
 
     # name: known_flash_identifiers
     # doc: A subset of the known "debug identifiers" for flash versions, associated to the version
@@ -309,7 +309,7 @@
     # name: minidump_stackwalk_pathname
     # doc: the full pathname of the extern program minidump_stackwalk (quote path with embedded spaces)
     # converter: str
-    minidump_stackwalk_pathname='/data/socorro/stackwalk/bin/minidump_stackwalk'
+    minidump_stackwalk_pathname='/home/socorro/socorro/stackwalk/bin/minidump_stackwalk'
 
     # name: processor_class
     # doc: the class that transforms raw crashes into processed crashes
