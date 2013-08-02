@@ -18,6 +18,8 @@ if [ ! -d "$VENV/bin" ]; then
   pip install coverage
 fi
 
+source $VENV/bin/activate
+
 pip install -q -r requirements/dev.txt
 
 pip install -I --install-option="--home=`pwd`/vendor-local" \
@@ -30,12 +32,8 @@ pip install --install-option="--home=`pwd`/vendor-local" \
 
 export PATH=$PATH:./node_modules/.bin/
 
-if [ $(WORKSPACE) ]
-then
-    cp crashstats/settings/local.py-dist crashstats/settings/local.py
-    echo "# force jenkins.sh" >> crashstats/settings/local.py
-    echo "COMPRESS_OFFLINE = True" >> crashstats/settings/local.py
-fi
+echo "# force jenkins.sh" >> crashstats/settings/local.py
+echo "COMPRESS_OFFLINE = True" >> crashstats/settings/local.py
 
 ./manage.py collectstatic --noinput
 # even though COMPRESS_OFFLINE=True COMPRESS becomes (not DEBUG) which
