@@ -7,7 +7,7 @@ sudo apt-get install libldap2-dev libsasl2-dev
 sudo perl -i.bak -lpe 's/^timezone.*=(.*)/timezone = "UTC"/' /etc/postgresql/9.2/main/postgresql.conf
 sudo /etc/init.d/postgresql restart
 sudo su - postgres -c "createuser -s $USER"
-git clone https://github.com/mozilla/socorro
+git clone https://github.com/mozilla/socorro .
 make json_enhancements_pg_extension
 psql -f sql/roles.sql postgres
 psql -f sql/roles.sql breakpad
