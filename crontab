@@ -1,2 +1,2 @@
 */10 * * * * umask 0022; cd ~/fetch-win32-symbols; python start.py
-*/5 * * * * umask 0022; cd ~/socorro; PYTHONPATH=. ./socorro-virtualenv/bin/python socorro/cron/crontabber.py
+*/5 * * * * umask 0022; cd ~/socorro; PYTHONPATH=. ./socorro-virtualenv/bin/python socorro/cron/crontabber.py --logging.stderr_error_logging_level 30
